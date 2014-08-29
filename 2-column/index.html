@@ -9,7 +9,6 @@
 
       .navbar-offset { margin-top: 50px; }
       #map { position: absolute; top: 50px; bottom: 0px; left: 0px; right: 0px; }
-      #map .ol-zoom { font-size: 1.2em; }
 
       .zoom-top-opened-sidebar { margin-top: 5px; }
       .zoom-top-collapsed { margin-top: 45px; }
@@ -73,14 +72,14 @@
 
       $(function(){
         $('.sidebar-left .slide-submenu').on('click',function() {             
-          $(this).closest('.list-group').fadeOut('slide',function(){
+          $(this).closest('.sidebar-body').fadeOut('slide',function(){
             $('.mini-submenu').fadeIn();
             applyMargins();
           });
         });
 
         $('.sidebar-left .mini-submenu').on('click',function(){   
-          $(this).next('.list-group').toggle('slide');
+          $(this).next('.sidebar-body').toggle('slide');
           $('.mini-submenu').hide();
           applyMargins();
         })
@@ -167,31 +166,57 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </div>
-          <div class="list-group">
-            <span href="#" class="list-group-item active">
-            Submenu
-            <span class="pull-right slide-submenu">
-            <i class="fa fa-times"></i>
-            </span>
-            </span>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-comment-o"></i> Lorem ipsum
-            </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-search"></i> Lorem ipsum
-            </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-user"></i> Lorem ipsum
-            </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-folder-open-o"></i> Lorem ipsum <span class="badge">14</span>
-            </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-bar-chart-o"></i> Lorem ipsumr <span class="badge">14</span>
-            </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-envelope"></i> Lorem ipsum
-            </a>
+          <div class="panel-group sidebar-body" id="accordion-left">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#layers">
+                    Layers
+                  </a>
+                  <span class="pull-right slide-submenu">
+                    <i class="fa fa-chevron-left"></i>
+                  </span>
+                </h4>
+              </div>
+              <div id="layers" class="panel-collapse collapse in">
+                <div class="panel-body list-group">
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> Open Street Map
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> Bing
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> Open Street Map
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#properties">
+                    Properties
+                  </a>
+                </h4>
+              </div>
+              <div id="properties" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <p>
+                  Lorem ipsum dolor sit amet, vel an wisi propriae. Sea ut graece gloriatur. Per ei quando dicant vivendum. An insolens appellantur eos, doctus convenire vis et, at solet aeterno intellegebat qui.
+                  </p>
+                  <p>
+                  Elitr minimum inciderint qui no. Ne mea quaerendum scriptorem consequuntur. Mel ea nobis discere dignissim, aperiam patrioque ei ius. Stet laboramus eos te, his recteque mnesarchum an, quo id adipisci salutatus. Quas solet inimicus eu per. Sonet conclusionemque id vis.
+                  </p>
+                  <p>
+                  Eam vivendo repudiandae in, ei pri sint probatus. Pri et lorem praesent periculis, dicam singulis ut sed. Omnis patrioque sit ei, vis illud impetus molestiae id. Ex viderer assentior mel, inani liber officiis pro et. Qui ut perfecto repudiandae, per no hinc tation labores.
+                  </p>
+                  <p>
+                  Pro cu scaevola antiopam, cum id inermis salutatus. No duo liber gloriatur. Duo id vitae decore, justo consequat vix et. Sea id tale quot vitae.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
