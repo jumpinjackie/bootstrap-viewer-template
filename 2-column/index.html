@@ -24,23 +24,24 @@
         padding: 9px;  
         /*position: relative;*/
         width: 42px;
-        margin-left: 4px;
+        text-align: center;
       }
+
+      .mini-submenu-left {
+        position: absolute;
+        top: 60px;
+        left: 4px;
+        z-index: 40;
+      }
+
+      #map { z-index: 35; }
+
+      .sidebar { z-index: 45; }
+
+      .main-row { position: relative; top: 0; }
 
       .mini-submenu:hover{
         cursor: pointer;
-      }
-
-      .mini-submenu .icon-bar {
-        border-radius: 1px;
-        display: block;
-        height: 2px;
-        width: 22px;
-        margin-top: 3px;
-      }
-
-      .mini-submenu .icon-bar {
-        background-color: #000;
       }
 
       .slide-submenu{
@@ -58,32 +59,35 @@
     <script type="text/javascript">
 
       function applyMargins() {
-        var el = $(".sidebar-left .mini-submenu");
-        if (el.is(":visible"))
+        var leftToggler = $(".mini-submenu-left");
+        if (leftToggler.is(":visible")) {
           $("#map .ol-zoom")
             .css("margin-left", 0)
             .removeClass("zoom-top-opened-sidebar")
             .addClass("zoom-top-collapsed");
-        else
+        } else {
           $("#map .ol-zoom")
             .css("margin-left", $(".sidebar-left").width())
             .removeClass("zoom-top-opened-sidebar")
             .removeClass("zoom-top-collapsed");
+        }
       }
 
       $(function(){
-        $('.sidebar-left .slide-submenu').on('click',function() {             
-          $(this).closest('.sidebar-body').fadeOut('slide',function(){
-            $('.mini-submenu').fadeIn();
+        $('.sidebar-left .slide-submenu').on('click',function() {
+          var thisEl = $(this);
+          thisEl.closest('.sidebar-body').fadeOut('slide',function(){
+            $('.mini-submenu-left').fadeIn();
             applyMargins();
           });
         });
 
-        $('.sidebar-left .mini-submenu').on('click',function(){   
-          $(this).next('.sidebar-body').toggle('slide');
-          $('.mini-submenu').hide();
+        $('.mini-submenu-left').on('click',function() {
+          var thisEl = $(this);
+          $('.sidebar-left .sidebar-body').toggle('slide');
+          thisEl.hide();
           applyMargins();
-        })
+        });
 
         $(window).on("resize", applyMargins);
 
@@ -162,18 +166,14 @@
       <div class="navbar-offset"></div>
       <div id="map">
       </div>
-      <div class="row">
-        <div class="col-sm-4 col-md-3 sidebar sidebar-left">
-          <div class="mini-submenu">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </div>
+      <div class="row main-row">
+        <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
           <div class="panel-group sidebar-body" id="accordion-left">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" href="#layers">
+                    <i class="fa fa-list-alt"></i>
                     Layers
                   </a>
                   <span class="pull-right slide-submenu">
@@ -190,7 +190,7 @@
                     <i class="fa fa-globe"></i> Bing
                   </a>
                   <a href="#" class="list-group-item">
-                    <i class="fa fa-globe"></i> Open Street Map
+                    <i class="fa fa-globe"></i> WMS
                   </a>
                 </div>
               </div>
@@ -199,6 +199,7 @@
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" href="#properties">
+                    <i class="fa fa-list-alt"></i>
                     Properties
                   </a>
                 </h4>
@@ -222,6 +223,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="mini-submenu mini-submenu-left pull-left">
+        <i class="fa fa-list-alt"></i>
       </div>
     </div>
   </body>
