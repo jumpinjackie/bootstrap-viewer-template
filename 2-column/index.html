@@ -77,6 +77,17 @@
         }
       }
 
+      function isConstrained() {
+        return $(".sidebar").width() == $(window).width();
+      }
+
+      function applyInitialUIState() {
+        if (isConstrained()) {
+          $(".sidebar-left .sidebar-body").fadeOut('slide');
+          $('.mini-submenu-left').fadeIn();
+        }
+      }
+
       $(function(){
         $('.sidebar-left .slide-submenu').on('click',function() {
           var thisEl = $(this);
@@ -107,6 +118,7 @@
             zoom: 2
           })
         });
+        applyInitialUIState();
         applyMargins();
       });
     </script>

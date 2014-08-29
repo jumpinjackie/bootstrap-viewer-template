@@ -95,14 +95,16 @@
         }
       }
 
+      function isConstrained() {
+        return $("div.mid").width() == $(window).width();
+      }
+
       function applyInitialUIState() {
-        var leftToggler = $(".mini-submenu-left");
-        var rightToggler = $(".mini-submenu-right");
-        if (leftToggler.is(":visible")) {
+        if (isConstrained()) {
           $(".sidebar-left .sidebar-body").fadeOut('slide');
-        }
-        if (rightToggler.is(":visible")) {
           $(".sidebar-right .sidebar-body").fadeOut('slide');
+          $('.mini-submenu-left').fadeIn();
+          $('.mini-submenu-right').fadeIn();
         }
       }
 
@@ -272,7 +274,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-4 col-md-6"></div>
+        <div class="col-sm-4 col-md-6 mid"></div>
         <div class="col-sm-4 col-md-3 sidebar sidebar-right pull-right">
           <div class="panel-group sidebar-body" id="accordion-right">
             <div class="panel panel-default">
