@@ -82,6 +82,17 @@
             .removeClass("zoom-top-opened-sidebar")
             .removeClass("zoom-top-collapsed");
         }
+        if (rightToggler.is(":visible")) {
+          $("#map .ol-rotate")
+            .css("margin-right", 0)
+            .removeClass("zoom-top-opened-sidebar")
+            .addClass("zoom-top-collapsed");
+        } else {
+          $("#map .ol-rotate")
+            .css("margin-right", $(".sidebar-right").width())
+            .removeClass("zoom-top-opened-sidebar")
+            .removeClass("zoom-top-collapsed");
+        }
       }
 
       function applyInitialUIState() {
