@@ -5,3 +5,9 @@ Some seed bootstrap templates for interactive map viewers. I was sick of basical
 
  * [2-column layout](//jumpinjackie.github.io/bootstrap-viewer-template/2-column/index.html)
  * [3-column layout](//jumpinjackie.github.io/bootstrap-viewer-template/3-column/index.html)
+
+
+License
+=======
+
+MIT
